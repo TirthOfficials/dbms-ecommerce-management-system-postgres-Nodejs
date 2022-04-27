@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const app = express();
 const port = 3001;
@@ -11,6 +12,17 @@ app.use(function (req, res, next) {
     'Content-Type, Access-Control-Allow-Headers'
   );
   next();
+});
+
+app.get('/filter', (req, res) => {
+  merchant_model
+    .productFilter()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 app.get('/', (req, res) => {

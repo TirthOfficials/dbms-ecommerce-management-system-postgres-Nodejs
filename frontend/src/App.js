@@ -1,14 +1,26 @@
+// import { response } from 'express';
 import React, { useState, useEffect } from 'react';
 
 function App() {
   const [merchants, setMerchants] = useState(false);
+  const [filter, setFilter] = useState(false);
 
   useEffect(() => {
     getMerchant();
+    product_filter();
   }, []);
 
   function getMerchant() {
     fetch('http://localhost:3001')
+      .then((response) => {
+        return response.text();
+      })
+      .then((data) => {
+        setMerchants(data);
+      });
+  }
+  function product_filter() {
+    fetch('http://localhost:3001/filter')
       .then((response) => {
         return response.text();
       })
@@ -59,6 +71,8 @@ function App() {
       <button onClick={createMerchant}>Add</button>
       <br />
       <button onClick={deleteMerchant}>Delete</button>
+      <h1>product filter</h1>
+      {filter ? 'There is no filter data available' : filter}
     </div>
   );
 }

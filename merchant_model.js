@@ -3,14 +3,25 @@ const Pool = require('pg').Pool;
 const pool = new Pool({
   user: 'my_user',
   host: 'localhost',
-  database: 'postgres',
+  database: 'project',
   password: 'root',
   port: 5432,
 });
 
 const getMerchants = () => {
   return new Promise(function (resolve, reject) {
-    pool.query('SELECT * FROM merchants ORDER BY id ASC', (error, results) => {
+    pool.query('SELECT * FROM user_details', (error, results) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(results.rows);
+    });
+  });
+};
+
+const productFilter = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(`select product_filter(200,'post')`, (error, results) => {
       if (error) {
         reject(error);
       }
@@ -61,4 +72,5 @@ module.exports = {
   getMerchants,
   createMerchant,
   deleteMerchant,
+  productFilter,
 };
