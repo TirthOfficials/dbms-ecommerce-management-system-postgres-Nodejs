@@ -1,13 +1,11 @@
 // import { response } from 'express';
 import React, { useState, useEffect } from 'react';
-
 function App() {
   const [merchants, setMerchants] = useState(false);
   const [filter, setFilter] = useState(false);
-
   useEffect(() => {
     getMerchant();
-    product_filter();
+    // product_filter();
   }, []);
 
   function getMerchant() {
@@ -19,15 +17,15 @@ function App() {
         setMerchants(data);
       });
   }
-  function product_filter() {
-    fetch('http://localhost:3001/filter')
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        setMerchants(data);
-      });
-  }
+  // function product_filter() {
+  //   fetch('http://localhost:3001/filter')
+  //     .then((response) => {
+  //       return response.text();
+  //     })
+  //     .then((data) => {
+  //       setMerchants(data);
+  //     });
+  // }
 
   function createMerchant() {
     let name = prompt('Enter merchant name');

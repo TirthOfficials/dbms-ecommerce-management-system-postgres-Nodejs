@@ -3,14 +3,14 @@ const Pool = require('pg').Pool;
 const pool = new Pool({
   user: 'my_user',
   host: 'localhost',
-  database: 'project',
+  database: 'my_database',
   password: 'root',
   port: 5432,
 });
 
 const getMerchants = () => {
   return new Promise(function (resolve, reject) {
-    pool.query('SELECT * FROM user_details', (error, results) => {
+    pool.query('SELECT * FROM user_details;', (error, results) => {
       if (error) {
         reject(error);
       }
@@ -19,16 +19,16 @@ const getMerchants = () => {
   });
 };
 
-const productFilter = () => {
-  return new Promise(function (resolve, reject) {
-    pool.query(`select product_filter(200,'post')`, (error, results) => {
-      if (error) {
-        reject(error);
-      }
-      resolve(results.rows);
-    });
-  });
-};
+// const productFilter = () => {
+//   return new Promise(function (resolve, reject) {
+//     pool.query(`select product_filter(200,'post')`, (error, results) => {
+//       if (error) {
+//         reject(error);
+//       }
+//       resolve(results.rows);
+//     });
+//   });
+// };
 
 const createMerchant = (body) => {
   return new Promise(function (resolve, reject) {
@@ -72,5 +72,5 @@ module.exports = {
   getMerchants,
   createMerchant,
   deleteMerchant,
-  productFilter,
+  // productFilter,
 };
