@@ -12,7 +12,7 @@ const pool = new Pool({
 
 const getMerchants = () => {
   return new Promise(function (resolve, reject) {
-    pool.query('select * from user_details;', (error, results) => {
+    pool.query('select cart_info(100);', (error, results) => {
       if (error) {
         reject(error);
       }
