@@ -1,3 +1,5 @@
+const { type } = require('express/lib/response');
+
 const Pool = require('pg').Pool;
 
 const pool = new Pool({
@@ -14,7 +16,7 @@ const getMerchants = () => {
       if (error) {
         reject(error);
       }
-      resolve(JSON.parse(results.rows));
+      resolve(results.rows);
     });
     
   });

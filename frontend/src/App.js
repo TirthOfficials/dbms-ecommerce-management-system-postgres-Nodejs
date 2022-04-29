@@ -1,5 +1,7 @@
 // import { response } from 'express';
 import React, { useState, useEffect } from 'react';
+import './index.css';
+import './App.css'
 function App() {
   const [merchants, setMerchants] = useState([]);
   // const [us_de1]=getMerchant()
@@ -59,7 +61,7 @@ function App() {
       })
         .then((data) => {
           
-          const atts1 = Object.values(JSON.parse(JSON.stringify(data)));
+          const atts1 = Object.values(JSON.parse(data));
           console.log(typeof(atts1));          
           setMerchants(atts1);
           
@@ -144,16 +146,48 @@ function App() {
    }
 
   return (
+    
     <div id='merchants'>
-      
+      {console.log(typeof(merchants))}
+      {console.table(merchants)}
+      {/* {merchants.map(home => <div id="llll" className='flex text-red-500'><div id="l">{home.user_id}</div><div id="l">{home.f_name}</div><div id="l">{home.l_name}</div></div>)} */}
+    <div id='books'>
+    <span id="heading">DBMS</span>
+    <table id="results" className="table text-center table-hover">
+      <thead id="header">
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone No1</th>
+          <th scope="col">Phone No2</th>
+          <th scope="col">Email ID</th>
+          
+        </tr>
+      </thead>
+      {merchants.map((el,key) => {
+        return (
+          <tr key={key}>
+            <td>{el.user_id}</td>
+            <td>{el.f_name}</td>
+            <td>{el.l_name}</td>
+            <td>{el.phone_no1}</td>
+            <td>{el.phone_no2}</td>
+            <td>{el.email_id}</td>
+            
+          </tr>
+        );
+      })}
+    </table>
+    
+    </div>
 
       {/* <div>
         
         {merchants}
       </div> */}
       {/* {merchants ? merchants :   'There is no merchant data available'} */}
-      Hi I am tirth the great
-      <table>
+      {/* <table>
             <thead>
               <tr>
                 <th>User ID</th>
@@ -166,9 +200,9 @@ function App() {
             </thead>
             <tbody>
               
-              {merchants.map((item,key1) => {
+              {merchants.map((item,key) => {
                 return(
-                <tr key={key1}>
+                <tr key={key}>
                     <td>{ item.user_id }</td>
                     <td>{ item.f_name }</td>
                     <td>{ item.l_name }</td>
@@ -180,15 +214,13 @@ function App() {
                 })}
             </tbody>
            
-          </table>
+          </table> */}
 
-      <br />
-      {/* <button onClick={createMerchant}>Add</button> */}
-      <br />
-      {/* <button onClick={deleteMerchant}>Delete</button> */}
-      <h1>product filter</h1>
-      {/* {filter ? 'There is no filter data available' : filter} */}
+      
+      
+     
     </div>
+    
   );
 }
   
