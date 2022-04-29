@@ -14,8 +14,7 @@ const getMerchants = () => {
       if (error) {
         reject(error);
       }
-      console.log(typeof(data));
-      resolve(results.rows);
+      resolve(JSON.parse(results.rows));
     });
     
   });
