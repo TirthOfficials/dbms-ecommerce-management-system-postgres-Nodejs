@@ -10,12 +10,14 @@ const pool = new Pool({
 
 const getMerchants = () => {
   return new Promise(function (resolve, reject) {
-    pool.query('SELECT * FROM user_details;', (error, results) => {
+    pool.query('select * from user_details;', (error, results) => {
       if (error) {
         reject(error);
       }
+      console.log(typeof(data));
       resolve(results.rows);
     });
+    
   });
 };
 
