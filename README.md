@@ -6,7 +6,8 @@
 The project is on an E-commerce management system coded in Postgres and Nodejs. With the increase in demand for online shopping there is a need to manage and store the huge e-commerce data that is generated everyday. The project develops a system that keeps track of information about different products, its categories, information about customers and shippers. It organizes the data into different interrelated tables which make it easy to store the data without redundancy and access it based on the requirement.
 
 **System Requirements and Implemented Functions:**
- 	**Backend: **
+ 
+**Backend:**
 	We have created a backend database in Postgres.
-	Frontend:
+**Frontend:**
 	We have connected the backend database with the frontend using React(Node JS).
