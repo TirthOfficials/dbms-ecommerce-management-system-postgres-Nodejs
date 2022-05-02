@@ -1,0 +1,24 @@
+create or replace function generate_cart1() returns trigger as
+$$
+declare
+cartid int;
+total_amt int;
+total_qty int;
+custid1 int;
+begin
+cartid = random()*(1500-1100)+1100;
+total_amt = 0;
+total_qty = 0;
+custid1 = new.cust_id;
+insert into cart values(cartid,custid1,total_qty,total_amt);
+return new;
+end;
+$$
+language plpgsql;
+
+CREATE TRIGGER cart_generate4 AFTER INSERT ON customer
+    FOR EACH ROW EXECUTE FUNCTION generate_cart1();
+	
+insert into user_details values(750,'Twinkle', 'Popat', '1234567890', '1234567880', 'twinkle.popat@gmail.com');
+insert into customer values(109,750);
+select * from cart;

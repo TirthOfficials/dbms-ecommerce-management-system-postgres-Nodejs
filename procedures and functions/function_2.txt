@@ -1,0 +1,13 @@
+create or replace function orders(date1 date,date2 date)
+	returns table(order_id int,cust_id int)
+as $$
+begin
+return query
+select od.order_id,od.cust_id from order_details od where order_date>=date1 and order_date<=date2;
+end
+$$
+language plpgsql;
+
+select orders('2022-03-15','2022-03-27');
+
+

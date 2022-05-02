@@ -1,0 +1,15 @@
+create or replace function check_number() returns trigger as
+$$
+begin
+if length(cast(new.phone_no1 as varchar))!=10 or length(cast(new.phone_no2 as varchar))!=10 then
+	raise exception 'Invalid contact number';
+end if;
+return new;
+end;
+$$ 
+language plpgsql;
+
+CREATE TRIGGER check_number1 BEFORE INSERT OR UPDATE ON user_details
+    FOR EACH ROW EXECUTE FUNCTION check_number();
+	
+insert into user_details values(913, 'Emiway', 'Bantai', '873497234', '984298732', 'emiway@gmail.com');

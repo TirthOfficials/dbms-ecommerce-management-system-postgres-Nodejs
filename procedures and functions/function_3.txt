@@ -1,0 +1,11 @@
+create or replace function product_filter(costitem int, category varchar(20))
+   returns table (prod_id integer,product_name varchar(30),price decimal(10,2))
+as $$
+begin
+return query
+select pr.prod_id,pr.product_name,pr.price from product pr,category ca where pr.price<=costitem and ca.categ_name = category and pr.categ_id=ca.categ_id;
+end
+$$
+language plpgsql;
+
+select product_filter(4000, 'Books');

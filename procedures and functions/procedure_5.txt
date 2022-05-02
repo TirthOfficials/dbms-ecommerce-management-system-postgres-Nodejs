@@ -1,0 +1,12 @@
+create or replace procedure shipper_details(shipid int)
+language plpgsql
+as $$
+declare
+rec1 record;
+begin
+select shipper.shipper_id,shipper.s_name,shipper.address_id,shipper.order_id into rec1 from shipper where shipper.shipper_id=shipid;
+raise exception 'Shipper Id: %,Shipper Name: %,Order Id: %,Address Id:%',rec1.shipper_id,rec1.s_name,rec1.order_id,rec1.address_id;
+end
+$$
+
+call shipper_details(800);

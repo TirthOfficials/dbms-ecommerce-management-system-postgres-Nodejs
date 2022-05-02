@@ -1,0 +1,14 @@
+create or replace procedure order_history(custid1 int)
+language plpgsql
+as $$
+declare
+order1 record;
+begin
+for order1 in (select od.order_id,od.cust_id,od.order_date from order_details od where od.cust_id=custid1)
+loop
+raise exception 'Customer Id: %,Order Id : %,Order date : %',order1.cust_id,order1.order_id,order1.order_date;
+end loop;
+end
+$$
+
+call order_history(102);

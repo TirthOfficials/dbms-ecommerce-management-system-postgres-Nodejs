@@ -1,0 +1,14 @@
+create or replace function calculate_amt() returns trigger as
+$$
+declare
+amt int;
+begin
+select total_amt into amt from cart;
+new.final_amt = amt+50;
+return new;
+end;
+$$
+language plpgsql;
+
+CREATE TRIGGER final_amt BEFORE INSERT OR UPDATE ON payment_details
+    FOR EACH ROW EXECUTE FUNCTION calculate_amt();

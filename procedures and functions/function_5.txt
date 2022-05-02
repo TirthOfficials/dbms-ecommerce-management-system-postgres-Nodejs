@@ -1,0 +1,10 @@
+create or replace function cart_info(custid int)
+	returns table(cust_id int,cart_id int,total_qty decimal(3,0),total_amt decimal(11,2))
+as $$
+begin return query
+select cart.cust_id,cart.cart_id,cart.total_qty,cart.total_amt from cart where cart.cust_id=custid;
+end
+$$ 
+language plpgsql;
+
+select cart_info(100);

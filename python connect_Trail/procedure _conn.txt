@@ -1,0 +1,54 @@
+create or replace procedure user_det()
+language plpgsql as
+$$
+declare id "user_details"."user_id"%type;
+begin
+select max("user_id") into id from public."user_details";
+raise exception 'Maximum of user_id is : %', id;
+end;
+$$;
+
+call user_det();
+
+
+#################################
+2.
+
+create or replace procedure add_user(
+	"new_user_id" int,
+	"new_user_name1" varchar(10),
+	"new_user_name2" varchar(10),
+	"new_user_p1" decimal(10,0),
+	"new_user_p2" decimal(10,0),
+	"new_user_e" varchar(30)
+	
+)
+
+language plpgsql as
+$$
+begin
+insert into user_details values ("new_user_id", "new_user_name1", "new_user_name2", "new_user_p1", "new_user_p2", "new_user_e");
+end
+$$;
+
+call add_user(91, 'Toxic', 'Rapper', 567, 987, 'toxic@gmail.com');
+
+select * from user_details;
+
+#################################
+
+
+create or replace procedure user_det()
+language plpgsql as
+$$
+declare id "user_details"."user_id"%type;
+begin
+select max("user_id") into id from public."user_details";
+raise notice 'Maximum of user_id is : %', id;
+end;
+$$;
+
+call user_det();
+
+
+

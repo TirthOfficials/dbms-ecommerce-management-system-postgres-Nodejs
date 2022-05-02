@@ -1,0 +1,11 @@
+create or replace function cancelled_orders()
+	returns table(order_id int,cust_id int,order_date date,cancel_id int,c_dt date)
+as $$
+begin
+return query
+select od.order_id,od.cust_id,od.order_date,cd.cancel_id,cd.c_date from order_details od,cancellation cd where od.order_id=cd.order_id;
+end
+$$
+language plpgsql;
+
+select cancelled_orders();

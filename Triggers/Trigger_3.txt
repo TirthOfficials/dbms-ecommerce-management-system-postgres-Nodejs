@@ -1,0 +1,15 @@
+create or replace function check_qnty() returns trigger as
+$$
+begin
+if new.qty < 1 then
+	raise exception 'Quantity can not be zero or negative';
+end if;
+return new;
+end;
+$$ 
+language plpgsql;
+
+CREATE TRIGGER check_cartproduct BEFORE INSERT OR UPDATE ON cart_products
+    FOR EACH ROW EXECUTE FUNCTION check_qty;
+
+insert into cart_product values(400, 303, 0);

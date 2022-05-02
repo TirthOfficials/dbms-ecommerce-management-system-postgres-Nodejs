@@ -1,0 +1,12 @@
+create or replace procedure customer_details(custid int)
+language plpgsql
+as $$
+declare
+customer1 record;
+begin
+select customer.cust_id,user_details.f_name,user_details.l_name,user_details.phone_no1,user_details.email_id into customer1 from customer, user_details  where customer.user_id=user_details.user_id and customer.cust_id=custid;
+raise exception 'Customer Id : %,First Name : %, Last Name : %, Contact Number : %, Email : %',customer1.cust_id,customer1.f_name,customer1.l_name,customer1.phone_no1,customer1.email_id;
+end
+$$
+
+call customer_details(100);

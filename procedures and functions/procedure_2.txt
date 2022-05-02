@@ -1,0 +1,9 @@
+create or replace procedure update_details1(userid int,phone1 bigint,phone2 bigint,email varchar(20))
+as $$
+begin
+update user_details set phone_no1=phone1,phone_no2=phone2,email_id=email where user_id=userid;
+end
+$$ 
+language plpgsql;
+
+call update_details1(745, 7652327809, 8965382054, 'rushalitopper@gmail.com');

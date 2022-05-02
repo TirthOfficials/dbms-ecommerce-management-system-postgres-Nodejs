@@ -1,0 +1,14 @@
+create or replace procedure popular_brand() 
+language plpgsql
+as $$
+declare
+rec1 record;
+begin
+for rec1 in (select product.brand,count(product.prod_id) as "products" from product group by product.brand)
+loop
+raise exception 'Brand Name: %,Products: %',rec1.brand,rec1.products;
+end loop;
+end
+$$
+
+call popular_brand();

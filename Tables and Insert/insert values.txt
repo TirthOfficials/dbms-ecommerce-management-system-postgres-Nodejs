@@ -1,0 +1,87 @@
+#user_details
+insert into user_details values(745, 'Rushali', 'Moteria', '9119119111', '1081081081', 'rushali@gmail.com');
+
+insert into user_details values(746, 'Akshil', 'Thumar', '8118118111', '1091091091', 'akshil@gmail.com');
+
+insert into user_details values(747, 'Ushmay', 'Patel', '7117117111', '8098098091', 'ushmay@gmail.com');
+
+insert into user_details values(748, 'Tirth', 'Patel', '6116116111', '6096096091', 'tirthpatel@gmail.com');
+
+insert into user_details values(533, 'Yansi', 'Memdani', '9988562341', '7878964352', 'yansi@gmail.com');
+
+
+#address
+
+insert into address values(001, 748, 'Vishwa Residency', 'Gurukul Road', '380052', 'Ahmedabad', 'Gujarat');
+
+insert into address values(003, 745, 'Master Crest', 'Navrangpura', '380000', 'Rajkot', 'Gujarat');
+
+insert into address values(004, 746, 'Mannat', 'Mumbai', '340000', 'Mumbai', 'Maharastra');
+
+insert into address values(005, 747, 'UP Villas', 'dehradhun', '320000', 'lucknow', 'UP');
+
+#customer
+
+insert into customer values(100, 748);
+insert into customer values(101, 745);
+insert into customer values(102, 746);
+insert into customer values(103, 747);
+insert into customer values(111, 533);
+#category
+
+insert into category values (200, 'Electronics');
+insert into category values (201, 'Beauty & Health Care');
+
+insert into category values (202, 'Books');
+insert into category values (203, 'Music Equipments');
+
+
+#product 
+
+insert into product values(300, 'Microphone', 203, 'Maono', '5000');
+insert into product values(301, 'Story of helen keller', 202, 'TBH Publication', '800');
+insert into product values(302, 'Nord Oneplus', 200, 'Oneplus', '30000');
+insert into product values(303, 'Dettol Handwash', 201, 'Dettol', '500');
+
+#cart
+
+insert into cart values(400, 100, 7, 3500);
+insert into cart values(401, 101, 2, 1600);
+insert into cart values(402, 103, 5, 150000);
+insert into cart values(403, 102, 4, 20000);
+
+#cart_product
+
+insert into cart_product values(400, 303, 7);
+insert into cart_product values(401, 301, 2);
+insert into cart_product values(402, 302, 5);
+insert into cart_product values(403, 300, 4);
+
+#order_details
+
+insert into order_details values(500, 100, '2022-04-27');
+insert into order_details values(501, 101, '2022-04-25');
+insert into order_details values(502, 102, '2022-02-21');
+insert into order_details values(503, 103, '2022-03-19');
+insert into order_details values(504, 111, '2022-04-14');
+
+#payment_details
+
+insert into payment_details values(600, 500, 'Gpay', 3500);
+insert into payment_details values(601, 501, 'Bhim', 1600);
+insert into payment_details values(602, 502, 'COD', 20000);
+insert into payment_details values(603, 503, 'PayTM', 150000);
+insert into payment_details values(604, 504, 'PayTM', 3200);
+
+#shipper
+
+insert into shipper values(800, 'Vanshit Shah', 500, 001);
+insert into shipper values(801, 'Varun Parekh', 501, 002);
+insert into shipper values(802, 'Twinkle Popat', 502, 003);
+insert into shipper values(803, 'Neilay Bhatt', 503, 004);
+
+#cancellation
+
+insert into cancellation values(700, 502, '2020-04-28');
+insert into cancellation values(701, 503, '2020-03-25');
+

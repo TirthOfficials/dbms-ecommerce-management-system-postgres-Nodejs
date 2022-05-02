@@ -1,0 +1,28 @@
+create or replace function insert_cart() returns trigger as
+$$
+declare 
+prod_price decimal(10,2);
+prod_qnty int;
+cart_qnty int;
+amt decimal(10,2);
+
+begin
+select product.price into prod_price from product where product.prod_id=new.prod_id;
+select cart.total_amt into amt from cart where cart.cart_id=new.cart_id;
+prod_qnty=new.qty;
+amt=amt+(prod_price*prod_qnty);
+select cart.total_qty into cart_qnty from cart where cart.cart_id=new.cart_id;
+cart_qnty=cart_qnty+prod_qnty;
+
+update cart set total_qty=cart_qnty where cart.cart_id=new.cart_id;
+update cart set total_amt=amt where cart.cart_id=new.cart_id;
+
+return new;
+end;
+$$
+language plpgsql;
+
+CREATE TRIGGER cart_insert3 BEFORE INSERT ON cart_product
+    FOR EACH ROW EXECUTE FUNCTION insert_cart();
+insert into cart_product values(1293, 301, 7);
+select * from cart;

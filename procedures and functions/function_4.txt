@@ -1,0 +1,11 @@
+create or replace function products()
+	returns table(categ_name varchar(20),product_num bigint)
+as $$
+begin
+return query
+select category.categ_name,count(prod_id) from category,product group by category.categ_name;
+end
+$$ 
+language plpgsql;
+
+select products();
