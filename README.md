@@ -12,3 +12,5 @@ The project is on an E-commerce management system coded in Postgres and Nodejs. 
 
 **Frontend:**
 	We have connected the backend database with the frontend using React(Node JS).
+	
+Check **"DBMS Required Specification Document"** for all details of the project.
