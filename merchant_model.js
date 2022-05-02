@@ -16,9 +16,10 @@ const getMerchants = () => {
       if (error) {
         reject(error);
       }
+      
       resolve(results.rows);
     });
-    
+
   });
 };
 
