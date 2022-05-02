@@ -9,5 +9,6 @@ The project is on an E-commerce management system coded in Postgres and Nodejs. 
  
 **Backend:**
 	We have created a backend database in Postgres.
+
 **Frontend:**
 	We have connected the backend database with the frontend using React(Node JS).
